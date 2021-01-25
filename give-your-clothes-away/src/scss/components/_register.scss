@@ -1,0 +1,28 @@
+@import "../settings/colors";
+
+.top-menu {
+
+}
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+
+  h3{
+    color: $color-text3;
+    margin-inline: 10px;
+
+  }
+}
+.login-register {
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  padding:10px;
+  background-color: white;
+  cursor: pointer;
+  border:none;
+}
+.button:hover {
+  border: 1px solid $color-bar;
+}
