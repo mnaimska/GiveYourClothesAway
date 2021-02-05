@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -14,6 +14,7 @@ export const FormOne = ({formData, setForm, navigation}) => {
     console.log(checkbox1);
     console.log(checkbox2);
 
+
     return (
         <form>
             <div className="header-home grey-background">
@@ -22,18 +23,10 @@ export const FormOne = ({formData, setForm, navigation}) => {
                     <h3>Zaznacz co chcesz oddać</h3>
                     <div>
                         <div>
-                            {/*<div>*/}
-                            {/*    <input type="checkbox" name="checkbox1[]" id="test1"/>*/}
-                            {/*    <label htmlFor="test1">test1</label>*/}
-                            {/*    <input type="checkbox" name="checkbox1[]"/>*/}
-                            {/*    <label>test2</label>*/}
-                            {/*    <input type="checkbox" name="checkbox1[]"/>*/}
-                            {/*    <label >test3</label>*/}
-
-                            {/*</div>*/}
-
                             <label>
-                                <input type="checkbox" name="checkbox1" onChange={setForm} value={checkbox1}/>
+                                <input type="checkbox" name="checkbox1"
+                                       onChange={setForm}
+                                       value={checkbox1}/>
                                 ubrania, które nadają się do ponownego użycia
                             </label>
                         </div>
@@ -108,7 +101,20 @@ export const FormTwo = ({formData, setForm, navigation}) => {
 };
 
 export const FormThree = ({formData, setForm, navigation}) => {
-const {selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym}=formData;
+const {selectCity, dzieciom, komu, matkom, bezdomnym, niepełnosprawnym}=formData;
+const chosen = ["dzieciom", "matkom", "bezdomnym", "niepełnosprawnym"];
+const [checked, setChecked]=useState([]);
+const handleChecked=(e)=>{
+    const who= chosen[e.target.dataset.id];
+    let newTab=checked.filter(item=>item !==who);
+    if(e.target.checked) newTab.push(who);
+    setChecked(newTab);
+
+    // console.log(who);
+    console.log(newTab);
+
+}
+
     return (
         <form>
 
@@ -125,31 +131,43 @@ const {selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym}=formData;
                         <option value="Gdańsk">Gdańsk</option>
                     </select>
                     <h3>Komu chcesz pomóc?</h3>
-                    <label><input type="checkbox"
-                                  name="dzieciom"
-                                  onChange={setForm}
-                                  value={dzieciom}
-                    />
-                    dzieciom</label>
 
-                    <label> <input
-                        type="checkbox"
-                        name="matkom"
-                        onChange={setForm}
-                        value={matkom}
-                        />samotnym matkom</label>
-                    <label><input
-                        type="checkbox"
-                        name="bezdomnym"
-                        onChange={setForm}
-                        value={bezdomnym}
-                    />bezdomnym</label>
-                    <label> <input
-                        type="checkbox"
-                        name="niepełnosprawnym"
-                        onChange={setForm}
-                        value={niepełnosprawnym}
-                    />niepełnosprawnym</label>
+                    <div>{chosen.map((who, id)=>(<label key={id}>
+                        <input type="checkbox"
+                               name="komu"
+                               value={komu}
+                               data-id={id}
+                               onChange={setForm}
+                               onClick={handleChecked}/>{who}
+                    </label>))}</div>
+                    <span>Wybrałeś:</span>
+                    <div value={komu} name="komu" id="checkbox1Results" onChange={setForm}>{checked.map((item, id)=><li key={id}>{item}</li>)}</div>
+                    {/*<div>{checked.map((item, id)=><span key={id}>{item}</span>)}</div>*/}
+                    {/*<label><input type="checkbox"*/}
+                    {/*              name="dzieciom"*/}
+                    {/*              onChange={setForm}*/}
+                    {/*              value={dzieciom}*/}
+                    {/*/>*/}
+                    {/*dzieciom</label>*/}
+
+                    {/*<label> <input*/}
+                    {/*    type="checkbox"*/}
+                    {/*    name="komu"*/}
+                    {/*    onChange={setForm}*/}
+                    {/*    value={komu}*/}
+                    {/*    />samotnym matkom</label>*/}
+                    {/*<label><input*/}
+                    {/*    type="checkbox"*/}
+                    {/*    name="komu"*/}
+                    {/*    onChange={setForm}*/}
+                    {/*    value={komu}*/}
+                    {/*/>bezdomnym</label>*/}
+                    {/*<label> <input*/}
+                    {/*    type="checkbox"*/}
+                    {/*    name="komu"*/}
+                    {/*    onChange={setForm}*/}
+                    {/*    value={komu}*/}
+                    {/*/>niepełnosprawnym</label>*/}
                     <h3>Wpisz nazwę konkretnej orgranizacj (opcjonalnie)</h3>
                     <input className="input-step3" type="text"/>
                     <div>
@@ -215,6 +233,7 @@ console.log(street);
 };
 
 export const FormReview =({formData, navigation})=>{
+
     const {go}=navigation;
     const {checkbox1,
         checkbox2,
@@ -223,6 +242,7 @@ export const FormReview =({formData, navigation})=>{
         checkbox5,
         amount,
         selectCity,
+        komu,
         dzieciom,
         matkom,
         bezdomnym,
@@ -235,6 +255,8 @@ export const FormReview =({formData, navigation})=>{
         time,
         remarks
     }=formData;
+
+    console.log(formData);
     return (<>
         <div className="header-home grey-background">
             <div>
@@ -256,12 +278,18 @@ export const FormReview =({formData, navigation})=>{
                 <h4>Komu i w jakim mieście pomagasz: </h4>
                 <Summary  summary="gdzie" go={go} details={[
                     {'Miasto':selectCity},
-                    {'Dzieciom':dzieciom},
-                    {'Samotnym matkom': matkom},
-                    {'bezdomnym': bezdomnym},
-                    {'niepełnosprawnym':niepełnosprawnym},
+                    {'Komu':komu},
+
+                    // {'Dzieciom':dzieciom},
+                    // {'Samotnym matkom': matkom},
+                    // {'bezdomnym': bezdomnym},
+                    // {'niepełnosprawnym':niepełnosprawnym},
                 ]}/>
 
+                {/*<span>{komu.map(item=><span>{item}</span>)}</span>*/}
+                {/*<p>{checked.join(", ")}</p>*/}
+                {/*<p>{newTab.map(item=>( <span>{item}</span>))}</p>*/}
+                {/*<div>{checked.map((item, id)=><span key={id}>{item}</span>)}</div>*/}
                 <div className="address-form">
                     <div className="form">
                         <h4>Adres odbioru</h4>
@@ -306,20 +334,7 @@ export const FormReview =({formData, navigation})=>{
 export const Summary=({summary, details, go})=>{
 
     return (<>
-        {/*<div>*/}
-        {/*    <h1>Oddajesz:</h1>*/}
-        {/*    <div>*/}
-        {/*        {details.map((data,index)=>{*/}
-        {/*            const objKey=Object.keys(data)[0];*/}
-        {/*            const objVal=data[objKey];*/}
-        {/*            return (<ListItemText key={index}>{`${objKey}: ${objVal}`}</ListItemText>)*/}
-        {/*        })}*/}
-        {/*        <IconButton onClick={()=>go(`${summary.toLowerCase()}`)}><EditIcon/></IconButton>*/}
-        {/*    </div>*/}
-        {/*    {details.map(el=>{return <li>{el.checkbox1}</li>})}*/}
-        {/*    {console.log(details)}*/}
-
-        {/*</div>*/}
+        
        <Accordion>
        <AccordionSummary
        expandIcon={<ExpandMoreIcon/>}
