@@ -1,0 +1,28 @@
+@import "../settings/colors";
+.internal-form {
+  display: flex;
+  width: 50%;
+}
+.address-form {
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  label {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    color: $color-text3;
+  }
+  input {
+    background-color: $color-background;
+    border: solid 1px $color-text2;
+  }
+  textarea {
+    background-color: $color-background;
+    border: solid 1px $color-text2;
+  }
+}

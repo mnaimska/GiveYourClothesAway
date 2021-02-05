@@ -1,0 +1,14 @@
+@import "../settings/colors";
+
+.form-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.small-info {
+  font-size: 15px;
+}
+
+a{
+  text-decoration: none;
+  color: $color-text3;
+}

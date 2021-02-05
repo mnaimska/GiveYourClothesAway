@@ -1,0 +1,57 @@
+@import "../settings/colors";
+@import "../settings/fonts";
+
+.left-panel {
+  position:absolute;
+  top:-50px;
+  left:-220px;
+  z-index: -1;
+
+}
+.right-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 250px;
+  font-family: $font-alt;
+
+}
+.right-panel-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.image-left {
+  width: 700px;
+  height: 700px;
+  background: url("../../assets/Home-Hero-Image.jpg") no-repeat;
+  background-size: contain;
+
+}
+
+.header-home {
+
+  display: flex;
+  //padding: 30px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  //margin-top: 20px;
+  justify-content: space-evenly;
+
+}
+
+.home-decoration {
+  width: 200px;
+  height:40px;
+}
+.home-buttons {
+  border: solid 0.3px $color-text2;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 20px;
+  font-weight: 300;
+}
+.header-center-btn {
+  display: flex;
+  justify-content: space-around;
+}

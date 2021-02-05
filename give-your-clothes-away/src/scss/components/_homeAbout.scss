@@ -1,0 +1,29 @@
+@import "../settings/colors";
+.left-panel-about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.home-about {
+  background-color: $color-background;
+  position: relative;
+  padding: 0;
+  margin-bottom: 0;
+}
+.right-panel-about {
+
+}
+.center-about {
+width: 50%;
+}
+.image-right {
+  width: 600px;
+  height: 400px;
+  background: url("../../assets/People.jpg") no-repeat;
+  background-size: contain;
+ margin-right: -100px;
+}

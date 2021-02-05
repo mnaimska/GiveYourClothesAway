@@ -6,9 +6,26 @@ body {
   margin: 0;
   font-family: $font-base;
   box-sizing: border-box;
+  padding: 20px;
   max-width: 100vw;
+  box-sizing: border-box;
 }
 
 @import "./settings/colors";
 @import "./settings/fonts";
 @import "./components/register";
+@import "/components/login";
+@import "./components/loggedIn";
+@import "./components/logout";
+@import "./components/homeHeader";
+@import "./components/homeThreeColumns";
+@import "./components/homeSimpleSteps";
+@import "./components/homeAbout";
+@import "./components/homeWhoWeHelp";
+@import "./components/homeContact";
+@import "./components/formStep1Header";
+@import "./components/formStep1Important";
+@import "./components/formStep1Form";
+@import "./components/formMain";
+@import "./components/formStep3";
+@import "./components/formStep4";

@@ -1,0 +1,14 @@
+@import "../settings/colors";
+
+.image-left-form {
+  width: 700px;
+  height: 700px;
+  background: url("../../assets/Form-Hero-Image.jpg") no-repeat;
+  background-size: contain;
+
+}
+.form1-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

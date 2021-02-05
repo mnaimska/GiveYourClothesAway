@@ -1,0 +1,37 @@
+@import "../settings/colors";
+.home-help {
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+.btn-help {
+  text-transform: none;
+}
+.center-help {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  text-align: center;
+}
+.foundation-list {
+  display: flex;
+  justify-content: space-between;
+}
+.center-box {
+  //
+  //display: flex;
+  //align-items: center;
+  //flex-direction: column;
+  //max-width: 900px;
+
+}
+.box-list {
+
+}
+.foundation-name {
+  margin-right: 50px;
+}
+.center-pagination {
+  display: flex;
+  justify-content: center;
+}

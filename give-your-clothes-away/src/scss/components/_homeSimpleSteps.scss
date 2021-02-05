@@ -1,0 +1,53 @@
+@import "../settings/colors";
+
+h2 {
+  font-weight: lighter;
+}
+.grey-div {
+  background-color: $color-background;
+}
+
+.icon1 {
+  background: url("../../assets/Icon-1.svg") no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+
+}
+.icon2 {
+  background: url("../../assets/Icon-2.svg") no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+
+}
+.icon3 {
+  background: url("../../assets/Icon-3.svg") no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+
+}
+.icon4 {
+  background: url("../../assets/Icon-4.svg") no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+
+}
+.column-small {
+  width:150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.line {
+  width: 50px;
+  color: $color-text2;
+}
+
+.long-btn {
+  padding-left: 50px;
+  padding-right: 50px;
+}
