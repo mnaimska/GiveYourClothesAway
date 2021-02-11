@@ -2,6 +2,9 @@ import React, {useRef, useState, useContext} from "react";
 import {useForm} from "react-hook-form";
 import { useHistory } from 'react-router-dom'
 import {FirebaseContext} from "./Firebase";
+import LoggedIn from "./LoggedIn";
+// import { view, store } from '@risingstack/react-easy-state';
+
 
 
 const Register =()=>{
@@ -11,20 +14,21 @@ const Register =()=>{
     password.current = watch("password", "");
     const firebase = useContext(FirebaseContext);
     const history = useHistory()
+    // const [isLogged, setIsLogged]=useState(false);
 
-
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         firebase.doCreateUserWithEmailAndPassword(data.email, data.password)
-            .then(() => history.push('/zalogowany') )
-        console.log(data);
+            .then(() => {history.push('/zalogowany')
+
+            } )
+      console.log(data);
+
     }
+
     return (
         <>
             <div className="top-menu">
-                {/*<div className="login-register">*/}
-                {/*    <button className="button"><a href="zaloguj">Zaloguj</a></button>*/}
 
-                {/*</div>*/}
                 <div className="navigation">
                     <h3>Start</h3>
                     <h3>O co chodzi? </h3>

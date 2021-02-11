@@ -11,15 +11,20 @@ import Logout from "./components/Logout";
 import FormPage from "./components/Form/FormPage";
 
 function App() {
+
+
   return (
    <BrowserRouter>
        {/*<Navigation/>*/}
 
        <Switch>
            <Route exact path={ROUTES.Home} component={Home}/>
-            <Route path={ROUTES.Register} component={Register}/>
+            <Route path={ROUTES.Register} component={Register} />
            <Route path={ROUTES.Login} component={Login}/>
-           <Route path={ROUTES.LoggedIn} component={LoggedIn}/>
+           <Route path={ROUTES.LoggedIn}
+                  // render={(props)=>(<LoggedIn {...props} isLogged={false}/>)}
+                  component={LoggedIn}/>
+               />
            <Route path={ROUTES.Logout} component={Logout}/>
            <Route path={ROUTES.FormPage} component={FormPage}/>
        </Switch>

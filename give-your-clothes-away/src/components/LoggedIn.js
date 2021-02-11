@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { useHistory } from 'react-router-dom'
 import {FirebaseContext} from "./Firebase";
 import Home from "./Home/Home";
@@ -9,16 +9,24 @@ import HomeThreeColumns from "./Home/HomeThreeColumns";
 import HomeWhoWeHelp from "./Home/HomeWhoWeHelp";
 import HomeContact from "./Home/HomeContact";
 
-const LoggedIn =()=>{
+const LoggedIn =({userEmail})=>{
 
     const firebase = useContext(FirebaseContext);
     const history = useHistory()
+    // const [isLogged, setIsLogged]=useState(false);
 
 
     const handleLogOut = data => {
         firebase.doSignOut(data.email, data.password)
-            .then(() => history.push('/wylogowano') )
+            .then(() => {history.push('/wylogowano')
+                            // localStorage.clear()
+                // setIsLogged(false)
+            } )
         console.log(data);
+
+
+        // localStorage.clear();
+
     }
     return (<>
         <div >
@@ -28,7 +36,7 @@ const LoggedIn =()=>{
         <div className="top-menu">
             <div className="login-register">
                 <div className="loggedIn">
-                    <p>jesteś zalogowany</p>
+                    <p>jesteś zalogowany {localStorage.getItem("userEmail")}</p>
                     <button className="button" onClick={handleLogOut}>Wyloguj</button>
                 </div>
             </div>

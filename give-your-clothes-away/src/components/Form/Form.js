@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -6,6 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import app from "firebase";
+import {FirebaseContext} from "../Firebase";
+import { useHistory } from 'react-router-dom'
 
 
 export const FormOne = ({formData, setForm, navigation}) => {
@@ -13,8 +16,17 @@ export const FormOne = ({formData, setForm, navigation}) => {
     const {checkbox1, checkbox2, checkbox3, checkbox4, checkbox5}=formData;
     console.log(checkbox1);
     console.log(checkbox2);
+    console.log(formData);
+   const onlyChecked=(e)=>{
+       // const [checkedTab, setCheckedTab]=useState([]);
+       if(checkbox1){
 
-
+           console.log(checkbox1);
+       }else {
+           console.log("empty")
+       }
+   }
+   console.log(onlyChecked());
     return (
         <form>
             <div className="header-home grey-background">
@@ -89,8 +101,8 @@ export const FormTwo = ({formData, setForm, navigation}) => {
                                     <option value="5">5</option>
                                 </select>
                             </label>
-                            <button className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
-                            <button className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
+                            <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
+                            <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
                         </div>
                     </div>
                 </div>
@@ -115,6 +127,7 @@ const handleChecked=(e)=>{
 
 }
 
+
     return (
         <form>
 
@@ -132,50 +145,52 @@ const handleChecked=(e)=>{
                     </select>
                     <h3>Komu chcesz pomóc?</h3>
 
-                    <div>{chosen.map((who, id)=>(<label key={id}>
-                        <input type="checkbox"
-                               name="komu"
-                               value={komu}
-                               data-id={id}
-                               onChange={setForm}
-                               onClick={handleChecked}/>{who}
-                    </label>))}</div>
-                    <span>Wybrałeś:</span>
-                    <div value={komu} name="komu" id="checkbox1Results" onChange={setForm}>{checked.map((item, id)=><li key={id}>{item}</li>)}</div>
+                    {/*<div>{chosen.map((who, id)=>(<label key={id}>*/}
+                    {/*    <input type="checkbox"*/}
+                    {/*           name="komu"*/}
+                    {/*           value={komu}*/}
+                    {/*         */}
+                    {/*           data-id={id}*/}
+                    {/*           onChange={setForm}*/}
+                    {/*           onClick={handleChecked}/>{who}*/}
+                    {/*</label>))}</div>*/}
+                    {/*<span>Wybrałeś:</span>*/}
+                    {/*<div value={komu} name="komu" id="checkbox1Results" onChange={setForm}>{checked.map((item, id)=><li key={id}>{item}</li>)}</div>*/}
+                    {/*<CheckboxResultWho komu={komu} setForm={setForm} checked={checked}/>*/}
                     {/*<div>{checked.map((item, id)=><span key={id}>{item}</span>)}</div>*/}
-                    {/*<label><input type="checkbox"*/}
-                    {/*              name="dzieciom"*/}
-                    {/*              onChange={setForm}*/}
-                    {/*              value={dzieciom}*/}
-                    {/*/>*/}
-                    {/*dzieciom</label>*/}
+                    <label><input type="checkbox"
+                                  name="dzieciom"
+                                  onChange={setForm}
+                                  value={dzieciom}
+                    />
+                    dzieciom</label>
 
-                    {/*<label> <input*/}
-                    {/*    type="checkbox"*/}
-                    {/*    name="komu"*/}
-                    {/*    onChange={setForm}*/}
-                    {/*    value={komu}*/}
-                    {/*    />samotnym matkom</label>*/}
-                    {/*<label><input*/}
-                    {/*    type="checkbox"*/}
-                    {/*    name="komu"*/}
-                    {/*    onChange={setForm}*/}
-                    {/*    value={komu}*/}
-                    {/*/>bezdomnym</label>*/}
-                    {/*<label> <input*/}
-                    {/*    type="checkbox"*/}
-                    {/*    name="komu"*/}
-                    {/*    onChange={setForm}*/}
-                    {/*    value={komu}*/}
-                    {/*/>niepełnosprawnym</label>*/}
+                    <label> <input
+                        type="checkbox"
+                        name="matkom"
+                        onChange={setForm}
+                        value={matkom}
+                        />samotnym matkom</label>
+                    <label><input
+                        type="checkbox"
+                        name="bezdomnym"
+                        onChange={setForm}
+                        value={bezdomnym}
+                    />bezdomnym</label>
+                    <label> <input
+                        type="checkbox"
+                        name="niepełnosprawnym"
+                        onChange={setForm}
+                        value={niepełnosprawnym}
+                    />niepełnosprawnym</label>
                     <h3>Wpisz nazwę konkretnej orgranizacj (opcjonalnie)</h3>
                     <input className="input-step3" type="text"/>
                     <div>
 
                         <div className="control-group">
 
-                            <button className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
-                            <button className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
+                            <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
+                            <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
                         </div>
                     </div>
                 </div>
@@ -185,6 +200,15 @@ const handleChecked=(e)=>{
         </form>
     );
 };
+
+export const CheckboxResultWho=({komu, setForm, checked})=>{
+    return (<>
+        <div value={komu} name="komu" id="checkbox1Results" onChange={setForm}>{checked.map((item, id)=><li key={id}>{item}</li>)}</div>
+
+
+
+    </>)
+}
 export const FormFour = ({formData, setForm, navigation}) => {
 const {street, city, postalCode, mobile, date, time, remarks}=formData
 console.log(street);
@@ -222,8 +246,8 @@ console.log(street);
 
                     <div className="control-group">
 
-                        <button className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
-                        <button className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
+                        <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
+                        <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
                     </div>
                 </div>
                 <div>right</div>
@@ -234,29 +258,45 @@ console.log(street);
 
 export const FormReview =({formData, navigation})=>{
 
+    const firebase = useContext(FirebaseContext);
+    const history = useHistory();
+    // function writeUserData(
+    //                         userId,
+    //                        email,  checkbox1, checkbox2, checkbox3, checkbox4, checkbox5,
+    //                        amount, selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym, street,
+    //                        city, postalCode, mobile, date, time, remarks,
+    //
+    // ) {
+    //     const userRef = app.database().ref('Users/');
+    //     const singleUser={
+    //         userId,
+    //         email, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5,
+    //         amount, selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym, street,
+    //         city, postalCode, mobile, date, time, remarks,
+    //
+    //
+    //     }
+    //
+    //     userRef.push(singleUser);
+    //     console.log(singleUser);
+    //     console.log(singleUser.key);
+    // }
+
     const {go}=navigation;
-    const {checkbox1,
-        checkbox2,
-        checkbox3,
-        checkbox4,
-        checkbox5,
-        amount,
-        selectCity,
-        komu,
-        dzieciom,
-        matkom,
-        bezdomnym,
-        niepełnosprawnym,
-        street,
-        city,
-        postalCode,
-        mobile,
-        date,
-        time,
-        remarks
+    const {checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, amount, selectCity,
+        dzieciom, matkom, bezdomnym, niepełnosprawnym, street, city, postalCode, mobile,
+        date, time, remarks
     }=formData;
+        const handleSubmit=()=>{
+            const firebaseRef=app.database().ref();
+            // const singleUser = firebaseRef.child("Users").set(formData);
+            const users = firebaseRef.child("Users");
+            const singleUser=users.child("singleUser").set(formData);
+        }
+        console.log(handleSubmit());
 
     console.log(formData);
+        const submitBtn=document.getElementById("submitBtn");
     return (<>
         <div className="header-home grey-background">
             <div>
@@ -276,14 +316,14 @@ export const FormReview =({formData, navigation})=>{
                     {'Ilość worków':amount},
                                     ]}/>
                 <h4>Komu i w jakim mieście pomagasz: </h4>
+                <div>Tutaj</div>
                 <Summary  summary="gdzie" go={go} details={[
                     {'Miasto':selectCity},
-                    {'Komu':komu},
-
-                    // {'Dzieciom':dzieciom},
-                    // {'Samotnym matkom': matkom},
-                    // {'bezdomnym': bezdomnym},
-                    // {'niepełnosprawnym':niepełnosprawnym},
+                    // {'Komu':komu},
+                   {'Dzieciom':dzieciom},
+                    {'Samotnym matkom': matkom},
+                    {'bezdomnym': bezdomnym},
+                    {'niepełnosprawnym':niepełnosprawnym},
                 ]}/>
 
                 {/*<span>{komu.map(item=><span>{item}</span>)}</span>*/}
@@ -318,8 +358,14 @@ export const FormReview =({formData, navigation})=>{
 
 
                 <div className="control-group">
-                    <button className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
-                    <button className="button home-buttons form-btn" onClick={()=>go('submit')}>Potwierdzam</button>
+                    <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
+                    <button type="button"
+                            className="button home-buttons form-btn"
+                            id="submitBtn"
+                            onClick={handleSubmit}
+                            // onClick={writeUserData}
+                            onClick={()=>go('submit')}
+                    >Potwierdzam</button>
                 </div>
             </div>
             <div>right</div>
@@ -334,7 +380,7 @@ export const FormReview =({formData, navigation})=>{
 export const Summary=({summary, details, go})=>{
 
     return (<>
-        
+
        <Accordion>
        <AccordionSummary
        expandIcon={<ExpandMoreIcon/>}
@@ -353,3 +399,4 @@ export const Summary=({summary, details, go})=>{
        </Accordion>
     </>)
 }
+

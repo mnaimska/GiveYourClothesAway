@@ -1,5 +1,5 @@
 
-import React, {useRef, useContext} from "react";
+import React, {useRef, useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import { useHistory } from 'react-router-dom'
 import {FirebaseContext} from "./Firebase";
@@ -14,18 +14,19 @@ const Login =()=>{
     const history = useHistory()
 
 
+
     const onSubmit = data => {
         firebase.doSignInWithEmailAndPassword(data.email, data.password)
-            .then(() => history.push('/zalogowany') )
-        console.log(data);
+            .then(() => {history.push('/zalogowany')
+                localStorage.setItem("userEmail", data.email)
+                  console.log(localStorage.getItem("userEmail"));
+
+            }
+            )
     }
     return (
         <>
             <div className="top-menu">
-                {/*<div className="login-register">*/}
-                {/*    <button className="button">Zaloguj</button>*/}
-                {/*    <button className="button">Załóż konto</button>*/}
-                {/*</div>*/}
                 <div className="navigation">
                     <h3>Start</h3>
                     <h3>O co chodzi? </h3>

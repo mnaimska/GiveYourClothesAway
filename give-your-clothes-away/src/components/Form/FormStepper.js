@@ -5,16 +5,13 @@ import {FormFour, FormOne, FormReview, FormThree, FormTwo} from "./Form";
 import FormSubmit from "./FormSubmit";
 
 const defaultData={
-    checkbox1:"",
-    checkbox2:"",
-    checkbox3:"",
-    checkbox4:"",
-    checkbox5:"",
+    checkbox1:false,
+    checkbox2:false,
+    checkbox3:false,
+    checkbox4:false,
+    checkbox5:false,
     amount:"",
     selectCity:"",
-    checked:[],
-    komu:"",
-    who:[],
     dzieciom:"",
     matkom:"",
     bezdomnym:"",

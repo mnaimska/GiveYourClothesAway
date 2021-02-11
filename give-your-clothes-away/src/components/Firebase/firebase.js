@@ -12,14 +12,27 @@ const firebaseConfig = {
     // appId: process.env.REACT_APP_"1:477266544066:web:8418a1b06ad6ff04ca025b"
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    // databaseURL: process.env.REACT_APP_DATABASE_URL,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
     projectId: process.env.REACT_APP_PROJECT_ID,
     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-
+    appId: process.env.REACT_APP_ID
 };
 
 // app.initializeApp(firebaseConfig);
+// const database=app.database();
+// function writeUserData(userId,  email, password, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5,
+//                        amount, selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym, street,
+//                        city, postalCode, mobile, date, time, remarks) {
+//     const userRef = app.database().ref('Users/');
+//     const singleUser={
+//         email, password, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5,
+//         amount, selectCity, dzieciom, matkom, bezdomnym, niepełnosprawnym, street,
+//         city, postalCode, mobile, date, time, remarks
+//
+//     }
+//     userRef.push(singleUser);
+// }
 
 
 class Firebase {

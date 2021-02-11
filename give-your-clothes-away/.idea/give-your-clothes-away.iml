@@ -10,5 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Scrum" />
     <orderEntry type="module" module-name="WAR_SFO_W_196_ScrumLab" />
+    <orderEntry type="module" module-name="react-firebase-choice" />
   </component>
 </module>
