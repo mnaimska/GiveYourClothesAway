@@ -28,8 +28,9 @@ export const FormOne = ({formData, setForm, navigation}) => {
    }
    console.log(onlyChecked());
     return (
-        <form>
-            <div className="header-home grey-background">
+
+        <form className="background-image header-home">
+            <div className="min-box-height">
                 <div>
                     <div>Krok 1/4</div>
                     <h3>Zaznacz co chcesz oddać</h3>
@@ -70,7 +71,7 @@ export const FormOne = ({formData, setForm, navigation}) => {
                         <button className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
                     </div>
                 </div>
-                <div>right</div>
+                {/*<div className="image-right"></div>*/}
             </div>
         </form>
     );
@@ -83,8 +84,8 @@ export const FormTwo = ({formData, setForm, navigation}) => {
     return (
         <form>
 
-            <div className="header-home grey-background">
-                <div>
+            <div className="header-home background-image">
+                <div className="min-box-height">
                     <div>Krok 2/4</div>
                     <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy</h3>
                     <div>
@@ -106,7 +107,7 @@ export const FormTwo = ({formData, setForm, navigation}) => {
                         </div>
                     </div>
                 </div>
-                <div>right</div>
+
             </div>
         </form>
     );
@@ -131,8 +132,8 @@ const handleChecked=(e)=>{
     return (
         <form>
 
-            <div className="header-home grey-background">
-                <div>
+            <div className="header-home background-image">
+                <div className="min-box-height">
                     <div>Krok 3/4</div>
                     <h3>Lokalizacja</h3>
                     <select type="select" name="selectCity" onChange={setForm} value={selectCity}>
@@ -194,7 +195,7 @@ const handleChecked=(e)=>{
                         </div>
                     </div>
                 </div>
-                <div>right</div>
+
             </div>
 
         </form>
@@ -214,8 +215,8 @@ const {street, city, postalCode, mobile, date, time, remarks}=formData
 console.log(street);
     return (
         <form>
-            <div className="header-home grey-background">
-                <div>
+            <div className="header-home background-image">
+                <div className="min-box-height">
                     <div>Krok 4/4</div>
                     <h3>Podaj adres i termin odbioru rzeczy przez kuriera</h3>
                     <div className="internal-form">
@@ -250,7 +251,7 @@ console.log(street);
                         <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.next()}>Dalej</button>
                     </div>
                 </div>
-                <div>right</div>
+
             </div>
         </form>
     );
@@ -296,79 +297,109 @@ export const FormReview =({formData, navigation})=>{
         console.log(handleSubmit());
 
     console.log(formData);
+
+
+
         const submitBtn=document.getElementById("submitBtn");
     return (<>
-        <div className="header-home grey-background">
-            <div>
+                {/*<h3>Podsumowanie Twojej darowizny</h3>*/}
+                {/*<h4>Oddajesz: </h4>*/}
+                {/*<Summary summary="co" go={go} details={[*/}
+                {/*    {'Ubrania do ponownego użytku ':checkbox1},*/}
+                {/*    {'Ubrania do wyrzucenia':checkbox2},*/}
+                {/*    {'Zabawki':checkbox3},*/}
+                {/*    {'Książki':checkbox4},*/}
+                {/*    {'Inne':checkbox5}*/}
 
-                <h3>Podsumowanie Twojej darowizny</h3>
-                <h4>Oddajesz: </h4>
-                <Summary summary="co" go={go} details={[
-                    {'Ubrania do ponownego użytku ':checkbox1},
-                    {'Ubrania do wyrzucenia':checkbox2},
-                    {'Zabawki':checkbox3},
-                    {'Książki':checkbox4},
-                    {'Inne':checkbox5}
+                {/*]}/>*/}
+                {/*<h4>Ilość worków: </h4>*/}
+                {/*<Summary summary="ile" go={go} key={amount} details={[*/}
+                {/*    {'Ilość worków':amount},*/}
+                {/*                    ]}/>*/}
 
-                ]}/>
-                <h4>Ilość worków: </h4>
-                <Summary summary="ile" go={go} details={[
-                    {'Ilość worków':amount},
-                                    ]}/>
-                <h4>Komu i w jakim mieście pomagasz: </h4>
-                <div>Tutaj</div>
-                <Summary  summary="gdzie" go={go} details={[
-                    {'Miasto':selectCity},
-                    // {'Komu':komu},
-                   {'Dzieciom':dzieciom},
-                    {'Samotnym matkom': matkom},
-                    {'bezdomnym': bezdomnym},
-                    {'niepełnosprawnym':niepełnosprawnym},
-                ]}/>
+
+                {/*<h4>Komu i w jakim mieście pomagasz: </h4>*/}
+                {/*<div>Tutaj</div>*/}
+                {/*<Summary  summary="gdzie" go={go} details={[*/}
+                {/*    {'Miasto':selectCity},*/}
+                {/*    // {'Komu':komu},*/}
+                {/*   {'Dzieciom':dzieciom},*/}
+                {/*    {'Samotnym matkom': matkom},*/}
+                {/*    {'bezdomnym': bezdomnym},*/}
+                {/*    {'niepełnosprawnym':niepełnosprawnym},*/}
+                {/*]}/>*/}
 
                 {/*<span>{komu.map(item=><span>{item}</span>)}</span>*/}
                 {/*<p>{checked.join(", ")}</p>*/}
                 {/*<p>{newTab.map(item=>( <span>{item}</span>))}</p>*/}
                 {/*<div>{checked.map((item, id)=><span key={id}>{item}</span>)}</div>*/}
-                <div className="address-form">
-                    <div className="form">
-                        <h4>Adres odbioru</h4>
-                        <Summary summary="adres" go={go} details={[
-                            {'Ulica':street},
-                            {'Miasto':city},
-                            {'Kod':postalCode},
-                            {"Numer tel": mobile}
+                {/*<div className="address-form">*/}
+                {/*    <div className="form">*/}
+                {/*        <h4>Adres odbioru</h4>*/}
+                {/*        <Summary summary="adres" go={go} details={[*/}
+                {/*            {'Ulica':street},*/}
+                {/*            {'Miasto':city},*/}
+                {/*            {'Kod':postalCode},*/}
+                {/*            {"Numer tel": mobile}*/}
 
-                            ]}/>
-
-
-                    </div>
-                    <div className="form">
-                        <h4>Termin odbioru</h4>
-                        <Summary  summary="adres" go={go} details={[
-                            {'Data':date},
-                            {'Godzina':time},
-                            {'Uwagi dla kuriera':remarks}
-
-                        ]}/>
-                    </div>
+                {/*            ]}/>*/}
 
 
+                    {/*</div>*/}
+                    {/*<div className="form">*/}
+                    {/*    <h4>Termin odbioru</h4>*/}
+                    {/*    <Summary  summary="adres" go={go} details={[*/}
+                    {/*        {'Data':date},*/}
+                    {/*        {'Godzina':time},*/}
+                    {/*        {'Uwagi dla kuriera':remarks}*/}
+
+                    {/*    ]}/>*/}
+                    {/*</div>*/}
+
+
+                {/*</div>*/}
+
+
+        <div className="background-image header-home">
+            <div className="min-box-height">
+                <h3>Podsumowanie Twojej darowizny:</h3>
+                <h3>Oddajesz:</h3>
+                <div className="inline">
+                <div className="icon1"> </div>
+                   <div> {amount} worki, </div>
                 </div>
-
-
+                <div className="inline">
+                    <div className="icon4"></div>
+                    <div>dla lokalizacji: {selectCity}</div>
+                </div>
+                <div className="inline">
+                    <div>
+                <div>Adres odbioru:</div>
+                <div>Ulica: {street}</div>
+                <div>Miasto: {city}</div>
+                <div>Kod pocztowy: {postalCode}</div>
+                <div>Nr telefonu: {mobile}</div>
+                    </div>
+                    <div>
+                        <div>Termin dobioru:</div>
+                        <div>Data: {date}</div>
+                        <div>Godzina: {time}</div>
+                        <div>Uwagi dla kuriera: {remarks}</div>
+                    </div>
+                </div>
                 <div className="control-group">
                     <button type="button" className="button home-buttons form-btn" onClick={()=>navigation.previous()}>Wstecz</button>
                     <button type="button"
                             className="button home-buttons form-btn"
                             id="submitBtn"
                             onClick={handleSubmit}
-                            // onClick={writeUserData}
+                        // onClick={writeUserData}
                             onClick={()=>go('submit')}
                     >Potwierdzam</button>
                 </div>
             </div>
-            <div>right</div>
+
+
         </div>
 
 

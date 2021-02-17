@@ -6,3 +6,21 @@
 .yellow {
   background: $color-bar;
 }
+.min-box-height {
+  min-height: 600px;
+
+}
+.inline {
+  display: flex;
+}
+.inline-block {
+  display: inline-block;
+}
+.background-image {
+  max-width: 100vw;
+  max-height: 800px;
+  background: url("../../assets/Background-Form.jpg") no-repeat;
+  background-size: contain;
+  //height: 70%;
+
+}
