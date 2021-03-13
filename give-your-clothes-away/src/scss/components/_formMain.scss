@@ -7,20 +7,30 @@
   background: $color-bar;
 }
 .min-box-height {
-  min-height: 600px;
+  min-height: 400px;
 
+
+}
+
+.small-box {
+  width:200px;
+  margin: 10px;
 }
 .inline {
   display: flex;
 }
 .inline-block {
   display: inline-block;
+
 }
 .background-image {
-  max-width: 100vw;
-  max-height: 800px;
+  //max-width: 100vw;
+  max-height: 700px;
   background: url("../../assets/Background-Form.jpg") no-repeat;
-  background-size: contain;
+  background-size: cover;
+  display: flex;
+  justify-content: space-evenly;
+
   //height: 70%;
 
 }

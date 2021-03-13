@@ -28,7 +28,7 @@ export const FormOne = ({formData, setForm, navigation}) => {
    }
    console.log(onlyChecked());
     return (
-
+        <div>
         <form className="background-image header-home">
             <div className="min-box-height">
                 <div>
@@ -74,6 +74,7 @@ export const FormOne = ({formData, setForm, navigation}) => {
                 {/*<div className="image-right"></div>*/}
             </div>
         </form>
+        </div>
     );
 };
 
@@ -366,25 +367,25 @@ export const FormReview =({formData, navigation})=>{
                 <h3>Oddajesz:</h3>
                 <div className="inline">
                 <div className="icon1"> </div>
-                   <div> {amount} worki, </div>
+                   <div>   {amount} worki, </div>
                 </div>
                 <div className="inline">
                     <div className="icon4"></div>
-                    <div>dla lokalizacji: {selectCity}</div>
+                    <div>  dla lokalizacji:  {selectCity}</div>
                 </div>
                 <div className="inline">
-                    <div>
-                <div>Adres odbioru:</div>
-                <div>Ulica: {street}</div>
-                <div>Miasto: {city}</div>
-                <div>Kod pocztowy: {postalCode}</div>
-                <div>Nr telefonu: {mobile}</div>
+                    <div className="small-box">
+                <h5>Adres odbioru:</h5>
+                <div>Ulica:  {street}</div>
+                <div>Miasto:  {city}</div>
+                <div>Kod pocztowy:  {postalCode}</div>
+                <div>Nr telefonu:  {mobile}</div>
                     </div>
-                    <div>
-                        <div>Termin dobioru:</div>
-                        <div>Data: {date}</div>
-                        <div>Godzina: {time}</div>
-                        <div>Uwagi dla kuriera: {remarks}</div>
+                    <div className="small-box">
+                        <h5>Termin odbioru:</h5>
+                        <div>Data:  {date}</div>
+                        <div>Godzina:  {time}</div>
+                        <div>Uwagi dla kuriera:  {remarks}</div>
                     </div>
                 </div>
                 <div className="control-group">

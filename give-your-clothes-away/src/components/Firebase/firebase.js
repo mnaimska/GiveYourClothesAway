@@ -39,7 +39,43 @@ class Firebase {
     constructor() {
         app.initializeApp(firebaseConfig);
         this.auth=app.auth();
+        // const db= app.firestore();
+// const fundacjeRef=db.collection("fundacje");
+// fundacjeRef.doc("Dbam o zdrowie").set({
+//     name:"Dbam o zdrowie",
+//     mission:"zajmuje się pomocą osobom z problemami zdrowotnymi",
+//     items: "inne"
+// });
+// fundacjeRef.doc("Pomoc ubogim").set({
+//     name:"Pomoc ubogim",
+//     mission: "pomaga ubogim",
+//     items: "ubrania, zabawki, książki, inne"
+// });
+//         fundacjeRef.doc("Dla dzieci").set({
+//             name:"Dla dzieci",
+//             mission: "Pomaga dzieciom",
+//             items: "zabawki, ubrania, książki, inne"
+//         });
+//
+//
+//
+//        fundacjeRef.get().then((querySnapshot)=>{
+//             querySnapshot.forEach((doc)=>{
+//                 console.log(doc.data().name)
+//             })
+//
+//         })
+//         fundacjeRef.get().then((querySnapshot)=>{
+//             querySnapshot.forEach((doc)=>{
+//                 console.log(doc.data().mission)
+//             })
+//         })
+
+
+
+
     }
+
     doCreateUserWithEmailAndPassword =(email,password)=>
     this.auth.createUserWithEmailAndPassword(email,password)
 
@@ -48,6 +84,19 @@ class Firebase {
 
     doSignOut = () => this.auth.signOut();
 }
+
+
+
+// db.collection("fundacje").add({
+//     name: "Fundacja Bez domu",
+//     mission: "pomaga zebrać ubrania dla osób bez dachu nad głową"
+// })
+//     .then((docRef) =>{
+//         console.log("Document written with ID", docRef.id);
+//     })
+//     .catch((error)=>{
+//         console.error("Error adding document: ", error);
+//     })
 
 // export const auth = app.auth();
 export default Firebase;

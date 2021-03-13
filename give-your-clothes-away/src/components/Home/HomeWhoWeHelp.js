@@ -1,6 +1,48 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
+import Firebase from "../Firebase/firebase";
+import {FirebaseContext} from "../Firebase";
+
+import {useHistory} from "react-router-dom";
+import app from "firebase";
+// import {useHistory} from "react-router-dom";
 
 const HomeWhoWeHelp=()=>{
+    const firebase = useContext(FirebaseContext);
+    const db= app.firestore();
+    const fundacjeRef=db.collection("fundacje");
+    fundacjeRef.doc("Dbam o zdrowie").set({
+        name:"Dbam o zdrowie",
+        mission:"zajmuje się pomocą osobom z problemami zdrowotnymi",
+        items: "inne"
+    });
+    fundacjeRef.doc("Pomoc ubogim").set({
+        name:"Pomoc ubogim",
+        mission: "pomaga ubogim",
+        items: "ubrania, zabawki, książki, inne"
+    });
+    fundacjeRef.doc("Dla dzieci").set({
+        name:"Dla dzieci",
+        mission: "Pomaga dzieciom",
+        items: "zabawki, ubrania, książki, inne"
+    });
+
+
+
+
+    const onClickFoundations =()=>{
+       const names = fundacjeRef.get().then((querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                console.log(doc.data().name)
+            })
+
+        })
+       fundacjeRef.get().then((querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                console.log(doc.data().mission)
+            })
+        })
+
+    }
     return (<>
     <div id="whomwehelp" className="header-home">
         <div className="left-panel-about">
@@ -10,7 +52,10 @@ const HomeWhoWeHelp=()=>{
         </div>
     </div>
         <div className="header-home home-help">
-        <div className="column"><button className="button home-buttons btn-help">Fundacjom</button></div>
+        <div className="column"><button
+            className="button home-buttons btn-help"
+            onClick={onClickFoundations}
+        >Fundacjom</button></div>
         <div className="column"><button className="button home-buttons btn-help">Organizacjom pozarządowym</button></div>
         <div className="column"><button className="button home-buttons btn-help">Lokalnym zbiórkom</button></div>
         </div>
@@ -23,7 +68,7 @@ const HomeWhoWeHelp=()=>{
         <div className="center-box">
             <div className="box-list">
         <div className="foundation-list">
-            <div className="foundation-name">Fundacja "Dbam o zdrowie"<div>Cel i misja</div></div>
+            <div className="foundation-name">Fundacja <div>Cel i misja</div></div>
             <div>ubrania, jedzenie</div>
         </div>
         <hr/>
