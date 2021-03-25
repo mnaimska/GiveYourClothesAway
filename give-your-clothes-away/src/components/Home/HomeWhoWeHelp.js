@@ -19,6 +19,7 @@ const HomeWhoWeHelp=()=>{
     const [missionsLocal, setMissionsLocal] = useState([])
     const firebase = useContext(FirebaseContext);
     const db= app.firestore();
+
     const fundacjeRef=db.collection("fundacje");
 
     // const [allFundNames, setAllFundNames] = useState([]);
@@ -77,6 +78,7 @@ localRef.doc("Zbiórka pierwsza").set({
                 setShowNGO(false);
                 setNames(doc.data().name);
             })
+           
            fundacjeRef.get().then((querySnapshot)=>{
                // console.log("pojedyncza nazwa")
 
